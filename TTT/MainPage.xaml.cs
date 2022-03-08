@@ -14,7 +14,7 @@ namespace TTT
 		{
 			Label lbl = new Label
 			{
-				Text = "Swipe right for bot play and left for pvp",
+				Text = "Swipe to play",
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
 				FontSize = 36,
@@ -35,7 +35,8 @@ namespace TTT
 		}
 		async void SwipeRight_Swiped(object sender, SwipedEventArgs e)
 		{
-			await Navigation.PushAsync(new Bot());
+			//await Navigation.PushAsync(new Bot());
+			await Navigation.PushAsync(new Pvp());
 		}
 		async void SwipeLeft_Swiped(object sender, SwipedEventArgs e)
 		{
