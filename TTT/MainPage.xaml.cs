@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Android.Media;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -10,11 +12,27 @@ namespace TTT
 {
 	public partial class MainPage : ContentPage
 	{
+		protected MediaPlayer player;
+		public void StartPlayer(String filePath)
+		{
+			if (player == null)
+			{
+				player = new MediaPlayer();
+			}
+			else
+			{
+				player.Reset();
+				player.SetDataSource(filePath);
+				player.Prepare();
+				player.Start();
+			}
+		}
 		public MainPage()
 		{
+			StartPlayer("../../Assets/song.mp3");
 			Label lbl = new Label
 			{
-				Text = "Swipe to play",
+				Text = "Swipe to play(Right - pvp, Left - bot)",
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
 				FontSize = 36,
@@ -36,11 +54,11 @@ namespace TTT
 		async void SwipeRight_Swiped(object sender, SwipedEventArgs e)
 		{
 			//await Navigation.PushAsync(new Bot());
-			await Navigation.PushAsync(new Pvp());
+			await Navigation.PushAsync(new Pvp(true));
 		}
 		async void SwipeLeft_Swiped(object sender, SwipedEventArgs e)
 		{
-			await Navigation.PushAsync(new Pvp());
+			await Navigation.PushAsync(new Pvp(false));
 		}
 	}
 }
