@@ -1,4 +1,5 @@
 ﻿using Android.Media;
+using MediaManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,24 +13,18 @@ namespace TTT
 {
 	public partial class MainPage : ContentPage
 	{
-		protected MediaPlayer player;
-		public void StartPlayer(String filePath)
+		private async void Play()
 		{
-			if (player == null)
-			{
-				player = new MediaPlayer();
-			}
-			else
-			{
-				player.Reset();
-				player.SetDataSource(filePath);
-				player.Prepare();
-				player.Start();
-			}
+			await CrossMediaManager.Current.Play("https://krohhin20.thkit.ee/song.mp3"); //1 variant
+			CrossMediaManager.Current.ToggleRepeat();
+		}
+		private async void Stop()
+		{
+			await CrossMediaManager.Current.Stop();
 		}
 		public MainPage()
 		{
-			StartPlayer("../../Assets/song.mp3");
+			Play();
 			Label lbl = new Label
 			{
 				Text = "Swipe to play(Right - pvp, Left - bot)",

@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using MediaManager;
 
 namespace TTT.Droid
 {
@@ -18,8 +19,9 @@ namespace TTT.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
-
+            
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            CrossMediaManager.Current.Init();
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
