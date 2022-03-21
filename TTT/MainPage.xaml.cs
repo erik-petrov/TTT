@@ -15,7 +15,7 @@ namespace TTT
 	{
 		private async void Play()
 		{
-			await CrossMediaManager.Current.Play("https://krohhin20.thkit.ee/song.mp3"); //1 variant
+			await CrossMediaManager.Current.Play("https://petrov20.thkit.ee/song.mp3"); //1 variant
 			CrossMediaManager.Current.ToggleRepeat();
 		}
 		private async void Stop()

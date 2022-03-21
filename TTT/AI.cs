@@ -6,17 +6,17 @@ namespace TTT
 {
 	class AI
 	{
-        class Move
+        public class Move
         {
             public int row, col;
         };
 
-        static string player = "x", opponent = "o";
+        public string player = "x", opponent = "o";
 
         // This function returns true if there are moves
         // remaining on the board. It returns false if
         // there are no moves left to play.
-        static Boolean isMovesLeft(string[,] board)
+        public Boolean isMovesLeft(string[,] board)
         {
             for (int i = 0; i < 3; i++)
                 for (int j = 0; j < 3; j++)
@@ -27,7 +27,7 @@ namespace TTT
 
         // This is the evaluation function as discussed
         // in the previous article ( http://goo.gl/sJgv68 )
-        static int evaluate(string[,] b)
+        public int evaluate(string[,] b)
         {
             // Checking for Rows for X or O victory.
             for (int row = 0; row < 3; row++)
@@ -80,7 +80,7 @@ namespace TTT
         // This is the minimax function. It considers all
         // the possible ways the game can go and returns
         // the value of the board
-        static int minimax(string[,] board,
+        public int minimax(string[,] board,
                            int depth, Boolean isMax)
         {
             int score = evaluate(board);
@@ -161,7 +161,7 @@ namespace TTT
 
         // This will return the best possible
         // move for the player
-        static Move findBestMove(string[,] board)
+        public Move findBestMove(string[,] board)
         {
             int bestVal = -1000;
             Move bestMove = new Move();
